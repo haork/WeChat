@@ -1,0 +1,6 @@
+QDialog
+{
+#    background:rgb(245,245,245);
+    background:rgb(37,41,44);
+}
+

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql xml network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,17 +24,44 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     user.cpp \
-    msg.cpp
+    msg.cpp \
+    logindialog.cpp \
+    dialog.cpp \
+    common.cpp \
+    maindialog.cpp \
+    utils.cpp \
+    contentwidget.cpp \
+    basedialog.cpp \
+    resizabledialog.cpp \
+    closabledialog.cpp \
+    userinfodialog.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS  += \
     user.h \
-    msg.h
+    msg.h \
+    logindialog.h \
+    dialog.h \
+    common.h \
+    maindialog.h \
+    utils.h \
+    contentwidget.h \
+    basedialog.h \
+    resizabledialog.h \
+    closabledialog.h \
+    userinfodialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += \
+    dialog.ui \
+    maindialog.ui \
+    contentwidget.ui
 
 ICON = Appicon.icns
 
 RESOURCES += \
     resources.qrc
+
+DISTFILES += \
+    skin/login.qss \
+    skin/main.qss \
+    skin/common.qss

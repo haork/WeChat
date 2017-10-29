@@ -1,14 +1,15 @@
-﻿#include <QApplication>
+#include <QApplication>
 #include <QTextCodec>
 #include "logindialog.h"
 #include "maindialog.h"
 #include "basedialog.h"
+#include "testdialog.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    QTextCodec::setCodecForLocale(QTextCodec::codecForLocale());
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
 //    union ppt{
 //             int a;
@@ -25,6 +26,7 @@ int main(int argc, char *argv[])
 
     LoginDialog dialog;
 //    MainDialog dialog;
+//    TestDialog dialog;
     dialog.show();
 
 

@@ -1,15 +1,18 @@
-#ifndef USER_H
-#define USER_H
+#ifndef USERINFO_H
+#define USERINFO_H
 
 #include <QObject>
 
-class User
+class UserInfo
 {
 public:
-    QString Uin;
+    UserInfo();
+
+    int Uin;
     QString UserName;
     QString NickName;
     QString HeadImgUrl;
+    QString RemarkName;
     QString PYInitial;
     QString PYQuanPin;
     QString RemarkPYInital;
@@ -18,12 +21,12 @@ public:
     int StarFriend;
     int Sex;
     QString Signature;
-    int AppAccoutFlag;
+    int AppAccountFlag;
     int VerifyFlag;
     int ContactFlag;
-    int WebWxFpluginSwitch;
-    int HeadImage;
+    int WebWxPluginSwitch;
+    int HeadImgFlag;
     int SnsFlag;
 };
 
-#endif // USER_H
+#endif // USERINFO_H

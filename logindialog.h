@@ -1,4 +1,4 @@
-﻿#ifndef LOGINDIALOG_H
+#ifndef LOGINDIALOG_H
 #define LOGINDIALOG_H
 
 #include <QObject>
@@ -20,9 +20,11 @@
 #include <QNetworkCookieJar>
 #include <QNetworkCookie>
 
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonDocument>
 
 #include <QDomDocument>
-
 
 #include "common.h"
 #include "closabledialog.h"
@@ -41,7 +43,7 @@ public:
     void getQRCode();
     void handleQRCode();
 
-    void waitForScan();
+    void waitForScan(int tip);
     void handleScan();
 
     void getCookie(QString url);

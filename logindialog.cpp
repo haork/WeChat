@@ -13,7 +13,9 @@ LoginDialog::LoginDialog(QWidget *parent):ClosableDialog(parent)
 
 void LoginDialog::getUUID()
 {
-    reply = manager->get(QNetworkRequest(CommonInfo::loginUrl));
+    QString url = CommonInfo::getLoginUrl();
+    qDebug()<<url;
+    reply = manager->get(QNetworkRequest(url));
     connect(reply,&QNetworkReply::finished,this,&LoginDialog::handleUUID);
 }
 
@@ -49,13 +51,15 @@ void LoginDialog::handleQRCode()
     if(pixmap.load("qrcode.jpg"))
     {
         qrCode->setPixmap(pixmap);
-        waitForScan();
+        waitForScan(1);
     }
 }
 
-void LoginDialog::waitForScan()
+void LoginDialog::waitForScan(int tip)
 {
-    reply = manager->get(QNetworkRequest(CommonInfo::getScanResultUrl()));
+    QString url = CommonInfo::getScanResultUrl(tip);
+    qDebug()<<url;
+    reply = manager->get(QNetworkRequest(url));
     connect(reply,&QNetworkReply::finished,this,&LoginDialog::handleScan);
 }
 
@@ -85,18 +89,20 @@ void LoginDialog::handleScan()
             break;
         case 201:
             {
+
+
                 QString userAvatar = ((QString)list.at(2)).split("'").at(0);
                 QString subStr = userAvatar.mid(7);
                 QPixmap avatar = Utils::base64ToImage(subStr.toLocal8Bit());
                 avatar.save("avatar.jpg");
                 qrCode->setPixmap(avatar);
-
-                waitForScan();
+                waitForScan(0);
             }
             break;
         case 408:
             {
                 qDebug()<<"登录超时";
+                waitForScan(1);
             }
             break;
         default:
@@ -151,7 +157,7 @@ void LoginDialog::handleCookie()
                 }
                 else if(elem.tagName()=="pass_ticket")
                 {
-                    CommonInfo::ticket=elem.text();
+                    CommonInfo::ticket=elem.text().replace("%3D","");
                 }
             }
             MainDialog *dialog = new MainDialog();

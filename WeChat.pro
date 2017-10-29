@@ -35,7 +35,10 @@ SOURCES += main.cpp\
     basedialog.cpp \
     resizabledialog.cpp \
     closabledialog.cpp \
-    userinfodialog.cpp
+    userinfodialog.cpp \
+    testdialog.cpp \
+    contactinfo.cpp \
+    userinfo.cpp
 
 HEADERS  += \
     user.h \
@@ -49,7 +52,11 @@ HEADERS  += \
     basedialog.h \
     resizabledialog.h \
     closabledialog.h \
-    userinfodialog.h
+    userinfodialog.h \
+    testdialog.h \
+    contactinfo.h \
+    models.h \
+    userinfo.h
 
 FORMS    += \
     dialog.ui \
